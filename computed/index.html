@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+</head>
+
+<body>
+    <div id="app">
+        {{text}}
+        <br> 直接单行表达式:{{ text.split(',').reverse().join(',')}}
+        <br> 通过计算属性获取:{{reverseText}}
+        <hr> 购物车总价：{{price}}
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                text: '123,456,789',
+                package1: [
+                    { name: 'iphone', price: '5688', count: '1' },
+                    { name: 'ipad', price: '3688', count: '12' },
+                ],
+                package2: [
+                    { name: 'iphone', price: '5688', count: '1' },
+                    { name: 'ipad', price: '3688', count: '12' },
+                ]
+            },
+            computed: {
+                reverseText: {
+                    get: function () {
+                        return this.text.split(',').reverse().join(',')
+                    }
+                },
+                price: {
+                    get: function () {
+                        let price = 0
+                        for (let i = 0; i < this.package1.length; i++) {
+                            price += this.package1[i].price * this.package1[i].count
+
+                        }
+                        for (let i = 0; i < this.package2.length; i++) {
+                            price += this.package1[i].price * this.package1[i].count
+
+                        }
+                        return price
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
