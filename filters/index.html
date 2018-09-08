@@ -3,17 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .green{
+            color: green;
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
         <div>
-        过滤前:{{data}} <br>
-        过滤后:{{data | formateDate}}
+            过滤前:{{data}}
+            <br> 过滤后:{{data | formateDate}}
         </div>
+        <hr>
+        v-text:<div v-text=msg></div>
+        <hr>
+        v-html:<div v-html=p></div>
+        <hr>
+        v-bind:<div v-bind:class="className">绿了</div>
+        <hr>
+        v-on:<div>{{sum}}</div>
+        <button v-on:click="addOne">加一</button>
+
     </div>
 
 
@@ -26,14 +39,23 @@
         let view = new Vue({
             el: '#app',
             data: {
-                data: new Date()
+                data: new Date(),
+                msg: 'Hello Vue',
+                p: '<h1 style="color: red;">Hello Vue</h1>',
+                className: 'green',
+                sum: 0
 
             },
+            methods:{
+                addOne: function(){
+                    this.sum = this.sum + 1
+                }
+            },
             filters: {
-                formateDate: function(time){
+                formateDate: function (time) {
                     var data = new Date(time)
                     var year = data.getFullYear()
-                    var month = plusDate(data.getMonth()+1)
+                    var month = plusDate(data.getMonth() + 1)
                     var day = plusDate(data.getDate())
                     var hours = plusDate(data.getHours())
                     var minutes = plusDate(data.getMinutes())
