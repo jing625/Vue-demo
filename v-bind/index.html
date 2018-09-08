@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .transRed {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        .transGreen {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="点我变色" 
+        :class = {transRed:isRed,transGreen:isGreen}
+        v-on:click="change"
+        >
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                isRed: true,
+                isGreen: false
+            },
+            methods: {
+                change: function () {
+                    this.isRed = !this.isRed
+                    this.isGreen = !this.isGreen
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
