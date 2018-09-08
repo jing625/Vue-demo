@@ -52,14 +52,21 @@
 
         绑定style数组语法<br>
         <div v-bind:style = "[styleA,styleB]">我是谁</div>
-    </div>
+        <hr>
 
+        绑定变量<br>
+        <a v-bind:href="url">点我</a>
+        <img v-bind:src="imgUrl">
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
+                url: 'https://www.baidu.com/',
+                imgUrl: 'https://www.baidu.com/img/baidu_jgylogo3.gif',
                 isRed: true,
                 isGreen: false,
                 activeClass: 'active',
