@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>v-bind</title>
     <style>
         .transRed {
             width: 100px;
@@ -16,15 +16,42 @@
             height: 100px;
             background: green;
         }
+
+        .active{
+            width: 100px;
+            height: 100px;
+            background: red;
+            color: white;
+        }
+        .error{
+            border: 10px solid green;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
+        绑定class对象语法，Key是className,value是布尔值 <br>
         <input type="button" value="点我变色" 
         :class = {transRed:isRed,transGreen:isGreen}
         v-on:click="change"
         >
+        <hr>
+
+        绑定class数组语法，数组中成员对应className <br>
+        <div :class = [activeClass,errorClass]>我是数组绑定class</div>
+        <hr>
+
+        对象和数组结合使用
+        <div :class = [{transRed:isRed},errorClass]>我是对象和数组绑定class</div>
+        <hr>
+
+        绑定style对象语法<br>
+        <div v-bind:style = "{'color':color,'fontSize':fontSize + 'px'}">大家看看我吧</div>
+        <hr>
+
+        绑定style数组语法<br>
+        <div v-bind:style = "[styleA,styleB]">我是谁</div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -34,7 +61,17 @@
             el: '#app',
             data: {
                 isRed: true,
-                isGreen: false
+                isGreen: false,
+                activeClass: 'active',
+                errorClass: 'error',
+                color: 'red',
+                fontSize: 20,
+                styleA: {
+                    color: 'white'
+                },
+                styleB:{
+                    background: 'red'
+                }
             },
             methods: {
                 change: function () {
