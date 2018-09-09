@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <title>基本指令</title>
+</head>
+
+<body>
+    <div id="app">
+        v-for 遍历多个对象 <br>
+        <ol>
+            <li v-for="(value,index) in method">{{index}}--{{value}} </li>
+        </ol>
+        <hr>
+        v-for 遍历多个属性 <br>
+        <div v-for="(value,key,index) in nvshen">第{{index}}个--key:{{key}}--value:{{value}} </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                method: [
+                    { name: '多思考' },
+                    { name: '多练习' },
+                    { name: '多听课' }
+                ],
+                nvshen:{
+                    girl1: '佟丽娅',
+                    gilr2: '高圆圆',
+                    girl3: '林青霞'
+                }
+            }
+        })
+    </script>
+
+
+
+
+
+</body>
+
+</html>
