@@ -15,6 +15,27 @@
         <hr>
         v-for 遍历多个属性 <br>
         <div v-for="(value,key,index) in nvshen">第{{index}}个--key:{{key}}--value:{{value}} </div>
+        <hr>
+        stop:相当于stopPropagation 阻止冒泡传播<br>
+        <div @click = "divClick()" style="background: green; height: 100px; width: 100px">
+            <button @click.stop = "buttonClick">点我</button>
+        </div>
+        <hr>
+        self:只有作用于本身才会被调用<br>
+        <div @click.self = "divClick()" style="background: green; height: 100px; width: 100px">
+            <button @click = "buttonClick">点我</button>
+        </div>
+        <hr>
+        prevent:相当于preventDefault 阻止默认事件<br>
+        <form action="" @submit.prevent = "hangle">
+            <input type="submit" value="提交">
+        </form>
+        <hr>
+        once:只执行一次<br>
+        <button @click = buttonClick>无数次</button>
+        <button @click.once = buttonClick>只有一次</button>
+        <hr>
+        <input type="text" placeholder="按q或者w" @keyup.q = q @keyup.w = w>
     </div>
 
 
@@ -33,6 +54,23 @@
                     girl1: '佟丽娅',
                     gilr2: '高圆圆',
                     girl3: '林青霞'
+                }
+            },
+            methods: {
+                divClick: function(){
+                    alert('div被点击')
+                },
+                buttonClick: function(){
+                    alert('button被点击')
+                },
+                hangle: function(){
+                    alert('我不刷新了')
+                },
+                q: function(){
+                    alert('q')
+                },
+                w: function(){
+                    alert('w')
                 }
             }
         })
