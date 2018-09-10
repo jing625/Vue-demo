@@ -8,8 +8,22 @@
 
 <body>
     <div id="app">
-        <input v-model = message placeholder="eit me">
-        <p>message is : {{message}}</p>
+        输入框：<br>
+        <input v-model = message1 placeholder="edit me">
+        <p>message is : {{message1}}</p>
+        <hr>
+        多行文本：<br>
+        <textarea v-model = message2 cols="20" rows="3" placeholder="add multiple lines">11111</textarea>
+        <br>
+        <span>multiple message is :</span>
+        <p style="white-space: pre-line"> {{message2}}</p>
+        <hr>
+        复选框：<br>
+        1<input type="checkbox" value="1" v-model = message3>
+        2<input type="checkbox" value="2" v-model = message3>
+        3<input type="checkbox" value="3" v-model = message3>
+        4<input type="checkbox" value="4" v-model = message3>
+        选中了：{{message3}}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -17,7 +31,9 @@
         var app = new Vue({
             el: '#app',
             data: {
-                message: null
+                message1: null,
+                message2: '',
+                message3: []
             }
         })
     </script>
