@@ -25,6 +25,11 @@
         4<input type="checkbox" value="4" v-model = message3>
         选中了：{{message3}}
         <hr>
+        单选框：<br>
+        1<input type="radio" value="1" v-model = message4>
+        2<input type="radio" value="1" v-model = message4>
+        3<input type="radio" value="1" v-model = message4>
+        4<input type="radio" value="1" v-model = message4>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -34,7 +39,8 @@
             data: {
                 message1: null,
                 message2: '',
-                message3: []
+                message3: [],
+                message4: []
             }
         })
     </script>
