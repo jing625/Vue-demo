@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>props-2</title>
+    <title>props-3</title>
 </head>
 
 <body>
     <div id="app">
         <p>你银行卡余额是{{total}}元</p>
-        <my-component @change = "handleTotal"></my-component>
+        <my-component v-model = "total"></my-component>
     </div>
   
 
@@ -20,7 +20,6 @@
             props: ['abc'],
             template: `
                 <div>
-                    <button @click = increase>+1</button>
                     <button @click = increase>+1</button>
                     <button @click = reduce>-1</button>
                 </div>
@@ -33,11 +32,11 @@
             methods: {
                 increase: function(){
                     this.count = this.count + 1
-                    this.$emit('change',this.count)
+                    this.$emit('input',this.count)
                 },
                 reduce: function(){
                     this.count = this.count - 1
-                    this.$emit('change',this.count)
+                    this.$emit('input',this.count)
                 }
             }
         })
@@ -48,9 +47,8 @@
                total: 0
             },
             methods: {
-                handleTotal: function(total){
-                    this.total = total
-                }
+              
+                
             }
         })
     </script>
