@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <title>props-2</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>你银行卡余额是{{total}}元</p>
+        <my-component @change = "handleTotal"></my-component>
+    </div>
+  
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            props: ['abc'],
+            template: `
+                <div>
+                    <button @click = increase>+1</button>
+                    <button @click = reduce>-1</button>
+                </div>
+        `,
+            data: function(){
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                increase: function(){
+                    this.count = this.count + 1
+                    this.$emit('change',this.count)
+                },
+                reduce: function(){
+                    this.count = this.count - 1
+                    this.$emit('change',this.count)
+                }
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+               total: 0
+            },
+            methods: {
+                handleTotal: function(total){
+                    this.total = total
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <title>slot</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-component :abc="width"></my-component>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            props: ['abc'],
+            template: `
+                <div :style = "style">我是组件中的内容
+                    {{abc}}
+                </div>
+        `,
+            computed: {
+                style: function () {
+                    return {
+                        width: this.abc + 'px',
+                        background: 'red',
+                        heitht: '20px'
+                    }
+                }
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                width: ''
+            }
+        })
+    </script>
+</body>
+
+</html>
