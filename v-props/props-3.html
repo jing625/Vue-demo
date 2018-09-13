@@ -8,43 +8,62 @@
 
 <body>
     <div id="app">
-        <p>你银行卡余额是{{total}}元</p>
-        <my-component v-model = "total"></my-component>
+        
+        <my-component-a>111</my-component-a>
+        <hr>
+        <my-component-b>222</my-component-b>
     </div>
   
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script>
-        Vue.component('my-component', {
-            props: ['abc'],
+        Vue.component('my-component-a', {
             template: `
                 <div>
-                    <button @click = increase>+1</button>
-                    <button @click = reduce>-1</button>
+                    <button @click="handle">点我传播</button>
                 </div>
         `,
             data: function(){
                 return {
-                    count: 0
+                    a:'我是来自组件a的内容'
                 }
             },
             methods: {
-                increase: function(){
-                    this.count = this.count + 1
-                    this.$emit('input',this.count)
-                },
-                reduce: function(){
-                    this.count = this.count - 1
-                    this.$emit('input',this.count)
+                handle: function(){
+                    this.$root.bus.$emit('lala',this.a)
+                    console.log(1)
                 }
+            }
+        })
+        Vue.component('my-component-b', {
+            template: `
+                <div>
+                    {{a}}
+                </div>
+        `,
+            data: function(){
+                return {
+                    a:'1234'
+                }
+            },
+            created: function(){
+                console.log(2)
+                this.$root.bus.$on('lala',function(value){
+                  
+                    alert(value)
+             
+                })
+            },
+            methods: {
+
             }
         })
 
         var app = new Vue({
             el: '#app',
             data: {
-               total: 0
+               bus: new Vue()
             },
             methods: {
               
