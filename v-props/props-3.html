@@ -8,12 +8,14 @@
 
 <body>
     <div id="app">
-        
+
         <my-component-a>111</my-component-a>
         <hr>
         <my-component-b>222</my-component-b>
+        <hr>
+        <my-component-c>333</my-component-c>
     </div>
-  
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -24,14 +26,14 @@
                     <button @click="handle">点我传播</button>
                 </div>
         `,
-            data: function(){
+            data: function () {
                 return {
-                    a:'我是来自组件a的内容'
+                    a: '我是来自组件a的内容'
                 }
             },
             methods: {
-                handle: function(){
-                    this.$root.bus.$emit('lalala',this.a)
+                handle: function () {
+                    this.$root.bus.$emit('lalala', this.a)
                     console.log(1)
                 }
             }
@@ -42,47 +44,56 @@
                     {{a}}
                 </div>
         `,
-            data: function(){
+            data: function () {
                 return {
-                    a:'1234'
+                    a: '1234'
                 }
             },
-            created: function(){
+            created: function () {
                 console.log(2)
-                this.$root.bus.$on('lalala',function(value){
-                  
+                this.$root.bus.$on('lalala', function (value) {
+
                     alert(value)
-             
+
                 })
             },
             methods: {
 
             }
         })
-      
+
 
         var app = new Vue({
             el: '#app',
             data: {
-               bus: new Vue()
+                bus: new Vue()
             },
             components: {
-                'my-component-c':{
-                    template:`
+                'my-component-c': {
+                    template: `
                     <div>
                         {{a}}
                     </div>
-                    `
-                },
-                data: function(){
-                    return {
-                        a: 777
+                    `,
+                    data: function () {
+                        return {
+                            a: '777'
+                        }
+                    },
+                    created: function () {
+                        console.log(77)
+                        console.log(this)
+                        console.log(this.$root)
+                        this.$root.bus.$on('lalala', function (value) {
+                            console.log(777)
+                            alert(value + 777)
+                        })
                     }
-                },
+                }
             },
             methods: {
-              
-                
+
+
             }
         })
     </script>
