@@ -3,12 +3,15 @@
     <h1>{{ msg }}</h1>
     <br>
     <parent></parent>
+    <hr>
+    <outter></outter>
 
   </div>
 </template>
 
 <script>
   import parent from "./parent"
+  import outter from "./outter"
 
   export default {
     name: 'HelloWorld',
@@ -18,7 +21,8 @@
       }
     },
     components: {
-      parent
+      parent,
+      outter
     }
   }
 </script>

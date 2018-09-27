@@ -1,7 +1,7 @@
 <template>
   <div>
     <span>我是儿子</span> <br>
-    儿子中的全局属性--{{sGetNum}}
+    儿子中的全局数据--{{sGetNum}}
     <br>
     爸爸传来的数据---{{msg}}
     <button @click="sendFather">向爸爸发送数据</button>
