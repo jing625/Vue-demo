@@ -1,7 +1,7 @@
 <template>
   <div>
     <span>我是爸爸</span>-----{{fromSon}} <br>
-    爸爸中的全局数据---{{fGetNum}} <br>
+    爸爸中的全局数据---：{{fGetNum}} <br>
     <button @click="pAdd">爸爸中-点击改变全局数据</button>
     <button @click="pAddAction">爸爸中-点击改变全局数据(action)</button>
     <hr>

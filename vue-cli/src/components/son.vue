@@ -1,7 +1,7 @@
 <template>
   <div>
     <span>我是儿子</span> <br>
-    儿子中的全局数据--{{sGetNum}} <br>
+    儿子中的全局数据--：{{sGetNum}} <br>
     <button @click="sAdd">儿子中-点击改变全局数据</button>
     <button @click="sAddAction">儿子中-点击改变全局数据(action)</button>
     <br>
