@@ -14,11 +14,19 @@ var store = new Vuex.Store({
     num: 88
   },
   mutations: {
-    increase(state){
+    increase(state) {
       state.num++
     },
-    decrease(state){
+    decrease(state) {
       state.num--
+    }
+  },
+  actions: {
+    increaseAction: function (context) {
+      context.commit('increase')
+    },
+    decreaseAction:function (context) {
+      context.commit('decrease')
     }
   }
 })
