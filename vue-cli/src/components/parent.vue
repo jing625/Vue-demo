@@ -1,7 +1,8 @@
 <template>
   <div>
     <span>我是爸爸</span>-----{{fromSon}} <br>
-    爸爸中的全局数据---{{fGetNum}}
+    爸爸中的全局数据---{{fGetNum}} <br>
+    <button @click="pAdd">爸爸中-点击改变全局数据</button>
     <hr>
     <son :msg = "toSonMsg" @handle="getSon"></son>
   </div>
@@ -25,6 +26,9 @@
     methods:{
       getSon (value){
         this.fromSon = value
+      },
+      pAdd(){
+        this.$store.commit('increase')
       }
     },
     computed:{
