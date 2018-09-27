@@ -1,6 +1,7 @@
 <template>
   <div>
-    <span>我是爸爸</span>-----{{fromSon}}
+    <span>我是爸爸</span>-----{{fromSon}} <br>
+    爸爸中的全局数据---{{fGetNum}}
     <hr>
     <son :msg = "toSonMsg" @handle="getSon"></son>
   </div>
@@ -24,6 +25,11 @@
     methods:{
       getSon (value){
         this.fromSon = value
+      }
+    },
+    computed:{
+      fGetNum(){
+        return this.$store.state.num
       }
     }
   }
